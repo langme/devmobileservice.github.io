@@ -381,16 +381,8 @@
       <p class="app-desc">
         Classement clubs, réservation de terrains et accès vestiaires connectés. Social, stats et intégration BLE pour une expérience padel complète.
       </p>
-      <div class="app-snippet">
-        <span class="cmt">// Accès vestiaire via BLE</span><br>
-        <span class="kw">class</span> <span class="cls">KiProgRepository</span> {<br>
-        &nbsp;&nbsp;<span class="fn">Future</span>&lt;<span class="cls">LockState</span>&gt; <span class="fn">unlockLocker</span>(<span class="str">'kibolt_id'</span>)<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;=&gt; <span class="fn">bleService</span>.<span class="fn">sendCommand</span>(cmd.<span class="fn">unlock</span>);<br>
-        }
-      </div>
       <div class="features">
         <span class="feature">Classement clubs</span>
-        <span class="feature">BLE / KiProg</span>
         <span class="feature">Supabase</span>
         <span class="feature">Flutter</span>
         <span class="feature">Social</span>
@@ -422,7 +414,6 @@
       <div class="stack-item"><div class="stack-cat">Android natif</div><div class="stack-val">Kotlin + Compose</div></div>
       <div class="stack-item"><div class="stack-cat">Tests</div><div class="stack-val">Appium</div></div>
       <div class="stack-item"><div class="stack-cat">CI / CD</div><div class="stack-val">GitLab CI</div></div>
-      <div class="stack-item"><div class="stack-cat">IoT / BLE</div><div class="stack-val">KiProg SDK</div></div>
     </div>
   </section>
 
