@@ -3,424 +3,475 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>devmobileservice — Apps mobiles</title>
+  <title>devmobileservice — Mehdi Lang · Apps mobiles</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
 
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --bg:         #0B1120;
-      --bg2:        #0F1829;
-      --surface:    #131E30;
-      --surface2:   #1A2740;
-      --border:     rgba(56, 139, 253, 0.12);
-      --border2:    rgba(56, 139, 253, 0.25);
-      --cyan:       #38BDF8;
-      --cyan-dim:   rgba(56, 189, 248, 0.10);
-      --green:      #4ADE80;
-      --green-dim:  rgba(74, 222, 128, 0.10);
-      --purple:     #A78BFA;
-      --purple-dim: rgba(167, 139, 250, 0.10);
-      --text:       #E2EAF4;
-      --text-2:     #8B9DBB;
-      --text-3:     #4A5E7A;
-      --mono:       'JetBrains Mono', monospace;
-      --sans:       'Inter', sans-serif;
-      --radius:     14px;
-      --radius-sm:  8px;
+      --bg:#0B1120; --bg2:#0F1829; --surface:#131E30; --surface2:#1A2740;
+      --border:rgba(56,139,253,0.12); --border2:rgba(56,139,253,0.25);
+      --cyan:#38BDF8; --cyan-dim:rgba(56,189,248,0.10);
+      --green:#4ADE80; --green-dim:rgba(74,222,128,0.10);
+      --purple:#A78BFA; --purple-dim:rgba(167,139,250,0.10);
+      --amber:#FBBF24;
+      --text:#E2EAF4; --text-2:#8B9DBB; --text-3:#4A5E7A;
+      --mono:'JetBrains Mono',monospace; --sans:'Inter',sans-serif;
+      --radius:14px; --radius-sm:8px;
     }
-
     html { scroll-behavior: smooth; }
-
     body {
-      background: var(--bg);
-      color: var(--text);
-      font-family: var(--sans);
-      font-size: 15px;
-      line-height: 1.6;
-      min-height: 100vh;
+      background: var(--bg); color: var(--text); font-family: var(--sans);
+      font-size: 15px; line-height: 1.6; min-height: 100vh;
       background-image: radial-gradient(circle, rgba(56,139,253,0.07) 1px, transparent 1px);
       background-size: 40px 40px;
     }
 
     /* HERO */
-    .hero {
-      max-width: 960px;
-      margin: 0 auto;
-      padding: 72px 32px 56px;
-    }
-    .hero-url {
-      font-family: var(--mono);
-      font-size: 13px;
-      color: var(--cyan);
-      opacity: 0.65;
-      margin-bottom: 18px;
-    }
+    .hero { max-width: 960px; margin: 0 auto; padding: 68px 32px 40px; }
+    .hero-url { font-family: var(--mono); font-size: 13px; color: var(--cyan); opacity: 0.65; margin-bottom: 18px; }
     .hero-url .sl { color: var(--text-3); }
-
     .hero h1 {
-      font-family: var(--mono);
-      font-size: clamp(34px, 6vw, 66px);
-      font-weight: 600;
-      line-height: 1.05;
-      letter-spacing: -0.02em;
-      margin-bottom: 6px;
+      font-family: var(--mono); font-size: clamp(34px, 6vw, 66px);
+      font-weight: 600; line-height: 1.05; letter-spacing: -0.02em; margin-bottom: 6px;
     }
-    .word-dev     { color: var(--text); }
-    .word-mobile  { color: var(--cyan); }
-    .word-service { color: var(--text-2); }
-
-    .hero-sub {
-      font-size: 16px;
-      color: var(--text-2);
-      max-width: 560px;
-      font-weight: 300;
-      line-height: 1.75;
-      margin: 20px 0 26px;
-    }
+    .word-dev { color: var(--text); } .word-mobile { color: var(--cyan); } .word-service { color: var(--text-2); }
+    .hero-sub { font-size: 16px; color: var(--text-2); max-width: 580px; font-weight: 300; line-height: 1.75; margin: 20px 0 26px; }
     .hero-sub strong { color: var(--text); font-weight: 500; }
-
     .badges { display: flex; flex-wrap: wrap; gap: 8px; }
     .badge {
-      font-family: var(--mono);
-      font-size: 12px;
-      font-weight: 500;
-      padding: 5px 14px;
-      border-radius: 100px;
-      border: 1px solid rgba(56,189,248,0.30);
-      background: var(--cyan-dim);
-      color: var(--cyan);
+      font-family: var(--mono); font-size: 12px; font-weight: 500;
+      padding: 5px 14px; border-radius: 100px;
+      border: 1px solid rgba(56,189,248,0.30); background: var(--cyan-dim); color: var(--cyan);
+    }
+    .hero-contact { margin-top: 22px; display: flex; flex-wrap: wrap; gap: 8px; }
+    .contact-chip {
+      font-family: var(--mono); font-size: 12px; color: var(--text-2);
+      text-decoration: none; padding: 6px 13px; border: 1px solid var(--border);
+      border-radius: 100px; transition: border-color 0.15s, color 0.15s;
+      display: inline-flex; align-items: center; gap: 6px;
+    }
+    .contact-chip:hover { border-color: var(--border2); color: var(--text); }
+    .contact-chip .ico { color: var(--cyan); font-weight: 600; }
+    .hero-location { margin-top: 22px; font-family: var(--mono); font-size: 12px; color: var(--text-3); display: flex; align-items: center; gap: 8px; }
+    .dot-live { width: 7px; height: 7px; border-radius: 50%; background: var(--green); box-shadow: 0 0 7px var(--green); flex-shrink: 0; }
+
+    /* TABS */
+    .tabnav {
+      position: sticky; top: 0; z-index: 20;
+      background: rgba(11,17,32,0.82);
+      backdrop-filter: blur(12px);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 44px;
+    }
+    .tabnav-inner { max-width: 960px; margin: 0 auto; padding: 0 32px; display: flex; gap: 4px; }
+    .tab-btn {
+      font-family: var(--mono); font-size: 13px; font-weight: 500;
+      color: var(--text-3); background: none; border: none; cursor: pointer;
+      padding: 16px 18px; position: relative;
+      transition: color 0.15s; letter-spacing: 0.02em;
+    }
+    .tab-btn .sl { color: var(--text-3); margin-right: 5px; transition: color 0.15s; }
+    .tab-btn:hover { color: var(--text-2); }
+    .tab-btn.active { color: var(--cyan); }
+    .tab-btn.active .sl { color: var(--cyan); }
+    .tab-btn.active::after {
+      content: ''; position: absolute; left: 14px; right: 14px; bottom: -1px;
+      height: 2px; background: var(--cyan); border-radius: 2px;
+      box-shadow: 0 0 8px var(--cyan);
     }
 
-    .hero-location {
-      margin-top: 22px;
-      font-family: var(--mono);
-      font-size: 12px;
-      color: var(--text-3);
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-    .dot-live {
-      width: 7px; height: 7px;
-      border-radius: 50%;
-      background: var(--green);
-      box-shadow: 0 0 7px var(--green);
-      flex-shrink: 0;
-    }
-
-    /* DIVIDER */
-    .divider { max-width: 960px; margin: 0 auto 48px; padding: 0 32px; }
-    .divider hr { border: none; border-top: 1px solid var(--border); }
+    .tab-panel { display: none; animation: fade 0.35s ease; }
+    .tab-panel.active { display: block; }
+    @keyframes fade { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
 
     /* SECTION LABEL */
     .section-label {
-      max-width: 960px;
-      margin: 0 auto 18px;
-      padding: 0 32px;
-      font-family: var(--mono);
-      font-size: 11px;
-      color: var(--text-3);
-      letter-spacing: 0.09em;
-      text-transform: uppercase;
+      max-width: 960px; margin: 0 auto 18px; padding: 0 32px;
+      font-family: var(--mono); font-size: 11px; color: var(--text-3);
+      letter-spacing: 0.09em; text-transform: uppercase;
     }
     .section-label .sl { color: var(--cyan); margin-right: 6px; }
 
     /* APPS */
     .apps {
-      max-width: 960px;
-      margin: 0 auto;
-      padding: 0 32px 68px;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-      gap: 18px;
+      max-width: 960px; margin: 0 auto; padding: 0 32px 40px;
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 18px;
     }
-
     .app-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 30px;
-      display: flex;
-      flex-direction: column;
-      gap: 18px;
-      position: relative;
-      overflow: hidden;
-      transition: border-color 0.2s, transform 0.2s;
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 28px;
+      display: flex; flex-direction: column; gap: 18px;
+      position: relative; overflow: hidden; transition: border-color 0.2s, transform 0.2s;
     }
     .app-card:hover { border-color: var(--border2); transform: translateY(-2px); }
-
-    /* glow coin */
-    .app-card::before {
-      content: '';
-      position: absolute;
-      top: -70px; left: -70px;
-      width: 180px; height: 180px;
-      border-radius: 50%;
-      opacity: 0.07;
-      pointer-events: none;
-    }
-    .app-card.trip::before  { background: var(--cyan); }
+    .app-card::before { content: ''; position: absolute; top: -70px; left: -70px; width: 180px; height: 180px; border-radius: 50%; opacity: 0.07; pointer-events: none; }
+    .app-card.trip::before { background: var(--cyan); }
     .app-card.padel::before { background: var(--purple); }
-
-    /* accent top */
-    .app-card::after {
-      content: '';
-      position: absolute;
-      top: 0; left: 30px; right: 30px;
-      height: 1px;
-      opacity: 0.6;
-    }
-    .app-card.trip::after  { background: linear-gradient(90deg, var(--cyan), transparent); }
+    .app-card::after { content: ''; position: absolute; top: 0; left: 28px; right: 28px; height: 1px; opacity: 0.6; }
+    .app-card.trip::after { background: linear-gradient(90deg, var(--cyan), transparent); }
     .app-card.padel::after { background: linear-gradient(90deg, var(--purple), transparent); }
 
     .app-header { display: flex; align-items: center; gap: 14px; }
-    .app-icon {
-      width: 52px; height: 52px;
-      border-radius: 12px;
+    .app-icon-img { width: 56px; height: 56px; border-radius: 13px; object-fit: cover; border: 1px solid var(--border2); flex-shrink: 0; background: var(--bg2); }
+    .app-icon-fallback {
+      width: 56px; height: 56px; border-radius: 13px; flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center; font-size: 26px;
       border: 1px solid var(--border2);
-      display: flex; align-items: center; justify-content: center;
-      font-size: 24px; flex-shrink: 0;
     }
-    .app-card.trip  .app-icon { background: var(--cyan-dim); }
-    .app-card.padel .app-icon { background: var(--purple-dim); }
-
-    .app-name {
-      font-family: var(--mono);
-      font-size: 22px;
-      font-weight: 600;
-      letter-spacing: -0.01em;
-    }
-    .app-card.trip  .app-name { color: var(--cyan); }
+    .app-card.trip .app-icon-fallback { background: var(--cyan-dim); }
+    .app-card.padel .app-icon-fallback { background: var(--purple-dim); }
+    .app-name { font-family: var(--mono); font-size: 22px; font-weight: 600; letter-spacing: -0.01em; }
+    .app-card.trip .app-name { color: var(--cyan); }
     .app-card.padel .app-name { color: var(--purple); }
-
     .app-tagline { font-family: var(--mono); font-size: 11px; color: var(--text-3); margin-top: 3px; }
+    .app-store-meta { display: flex; flex-direction: column; gap: 2px; font-family: var(--mono); font-size: 10.5px; color: var(--text-3); margin-left: auto; text-align: right; }
 
-    .app-desc { font-size: 14px; color: var(--text-2); line-height: 1.72; font-weight: 300; }
+    .app-desc { font-size: 13.5px; color: var(--text-2); line-height: 1.7; font-weight: 300; }
 
-    /* snippet code */
-    .app-snippet {
-      background: var(--bg2);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-sm);
-      padding: 14px 16px;
-      font-family: var(--mono);
-      font-size: 12px;
-      line-height: 1.85;
+    /* screenshot strip */
+    .shots {
+      display: flex; gap: 10px; overflow-x: auto; padding-bottom: 4px; margin: 0 -4px;
+      scrollbar-width: thin; scrollbar-color: var(--border2) transparent; scroll-snap-type: x mandatory;
     }
-    .kw  { color: #7DD3FC; }
-    .fn  { color: var(--green); }
-    .str { color: #FCA5A5; }
-    .cmt { color: var(--text-3); font-style: italic; }
-    .cls { color: var(--purple); }
+    .shots::-webkit-scrollbar { height: 6px; }
+    .shots::-webkit-scrollbar-thumb { background: var(--border2); border-radius: 100px; }
+    .shot-frame {
+      position: relative; width: 128px; height: 264px; flex-shrink: 0;
+      border-radius: 12px; overflow: hidden; border: 1px solid var(--border);
+      background: var(--bg2); scroll-snap-align: start;
+    }
+    .shot-frame img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    /* placeholder shown when image is absent/broken */
+    .shot-frame::after {
+      content: attr(data-label);
+      position: absolute; inset: 0; z-index: -1;
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--mono); font-size: 10px; color: var(--text-3);
+      text-align: center; padding: 8px; line-height: 1.5;
+      background:
+        repeating-linear-gradient(45deg, rgba(56,139,253,0.04) 0 8px, transparent 8px 16px),
+        var(--bg2);
+    }
+    .shot-frame img.broken { display: none; }
 
-    /* features */
     .features { display: flex; flex-wrap: wrap; gap: 6px; }
-    .feature {
-      font-family: var(--mono);
-      font-size: 11px;
-      font-weight: 500;
-      padding: 4px 10px;
-      border-radius: 100px;
-      border: 1px solid;
-    }
-    .app-card.trip  .feature { border-color: rgba(56,189,248,0.28); color: var(--cyan);   background: var(--cyan-dim); }
+    .feature { font-family: var(--mono); font-size: 11px; font-weight: 500; padding: 4px 10px; border-radius: 100px; border: 1px solid; }
+    .app-card.trip .feature { border-color: rgba(56,189,248,0.28); color: var(--cyan); background: var(--cyan-dim); }
     .app-card.padel .feature { border-color: rgba(167,139,250,0.28); color: var(--purple); background: var(--purple-dim); }
 
-    /* card footer */
-    .app-footer {
-      display: flex; align-items: center;
-      justify-content: space-between;
-      padding-top: 16px;
-      border-top: 1px solid var(--border);
-      flex-wrap: wrap; gap: 10px;
-    }
-    .status {
-      display: flex; align-items: center; gap: 7px;
-      font-family: var(--mono); font-size: 11px; color: var(--text-3);
-    }
+    .app-footer { display: flex; align-items: center; justify-content: space-between; padding-top: 16px; border-top: 1px solid var(--border); flex-wrap: wrap; gap: 10px; }
+    .status { display: flex; align-items: center; gap: 7px; font-family: var(--mono); font-size: 11px; color: var(--text-3); }
     .status-dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
     .status-dot.active { background: var(--green); box-shadow: 0 0 5px var(--green); }
-    .status-dot.beta   { background: #FBBF24; box-shadow: 0 0 5px #FBBF24; }
-
     .app-links { display: flex; gap: 8px; }
     .link-btn {
-      font-family: var(--mono);
-      font-size: 12px; font-weight: 500;
-      padding: 6px 14px; border-radius: 100px;
-      text-decoration: none;
-      border: 1px solid var(--border2);
-      background: transparent; color: var(--text-2);
-      transition: all 0.15s; cursor: pointer;
-      display: inline-flex; align-items: center; gap: 5px;
+      font-family: var(--mono); font-size: 12px; font-weight: 500;
+      padding: 6px 14px; border-radius: 100px; text-decoration: none;
+      border: 1px solid var(--border2); background: transparent; color: var(--text-2);
+      transition: all 0.15s; cursor: pointer; display: inline-flex; align-items: center; gap: 5px;
     }
     .link-btn:hover { background: var(--surface2); color: var(--text); }
     .link-btn.primary { color: var(--bg); border-color: transparent; font-weight: 600; }
-    .app-card.trip  .link-btn.primary { background: var(--cyan); }
-    .app-card.trip  .link-btn.primary:hover { background: #7DD3FC; }
+    .app-card.trip .link-btn.primary { background: var(--cyan); }
+    .app-card.trip .link-btn.primary:hover { background: #7DD3FC; }
     .app-card.padel .link-btn.primary { background: var(--purple); }
     .app-card.padel .link-btn.primary:hover { background: #C4B5FD; }
 
+    /* PARCOURS / CV */
+    .cv-section { max-width: 960px; margin: 0 auto; padding: 0 32px 40px; }
+    .cv-intro { font-size: 15px; color: var(--text-2); font-weight: 300; line-height: 1.75; max-width: 620px; margin-bottom: 32px; }
+    .cv-intro strong { color: var(--text); font-weight: 500; }
+    .timeline { position: relative; padding-left: 26px; }
+    .timeline::before { content: ''; position: absolute; left: 6px; top: 8px; bottom: 8px; width: 1px; opacity: 0.4; background: linear-gradient(180deg, var(--cyan), var(--purple) 60%, var(--border)); }
+    .job { position: relative; padding-bottom: 30px; }
+    .job:last-child { padding-bottom: 6px; }
+    .job::before { content: ''; position: absolute; left: -26px; top: 5px; width: 13px; height: 13px; border-radius: 50%; background: var(--bg); border: 2px solid var(--cyan); }
+    .job.now::before { background: var(--cyan); box-shadow: 0 0 9px var(--cyan); }
+    .job.embedded::before { border-color: var(--text-3); }
+    .job-top { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 4px 16px; margin-bottom: 3px; }
+    .job-role { font-size: 16px; font-weight: 600; color: var(--text); }
+    .job-co { color: var(--cyan); }
+    .job.embedded .job-role { font-size: 14px; }
+    .job-date { font-family: var(--mono); font-size: 11px; color: var(--text-3); white-space: nowrap; }
+    .job-meta { font-family: var(--mono); font-size: 11px; color: var(--text-3); margin-bottom: 4px; }
+    .job-badge { display: inline-block; font-family: var(--mono); font-size: 10.5px; color: var(--amber); border: 1px solid rgba(251,191,36,0.30); background: rgba(251,191,36,0.08); border-radius: 100px; padding: 2px 9px; margin-bottom: 10px; }
+    .job ul { list-style: none; margin: 8px 0 12px; }
+    .job li { position: relative; padding-left: 16px; font-size: 13.5px; color: var(--text-2); font-weight: 300; margin-bottom: 5px; line-height: 1.6; }
+    .job li::before { content: '▸'; position: absolute; left: 0; color: var(--cyan); font-size: 11px; top: 1px; }
+    .job li strong { color: var(--text); font-weight: 500; }
+    .job-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+    .job-tag { font-family: var(--mono); font-size: 10.5px; padding: 3px 9px; border-radius: 100px; border: 1px solid var(--border); background: var(--bg2); color: var(--text-2); }
+    .job-desc-inline { font-size: 13px; color: var(--text-2); font-weight: 300; line-height: 1.65; margin-top: 4px; }
+
     /* STACK */
-    .stack-section { max-width: 960px; margin: 0 auto; padding: 0 32px 68px; }
-    .stack-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(138px, 1fr));
-      gap: 10px;
-    }
-    .stack-item {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-sm);
-      padding: 14px 16px;
-      transition: border-color 0.15s;
-    }
+    .stack-section { max-width: 960px; margin: 0 auto; padding: 0 32px 40px; }
+    .stack-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(138px, 1fr)); gap: 10px; }
+    .stack-item { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 14px 16px; transition: border-color 0.15s; }
     .stack-item:hover { border-color: var(--border2); }
-    .stack-cat {
-      font-family: var(--mono); font-size: 10px; font-weight: 500;
-      letter-spacing: 0.09em; text-transform: uppercase;
-      color: var(--text-3); margin-bottom: 5px;
-    }
+    .stack-cat { font-family: var(--mono); font-size: 10px; font-weight: 500; letter-spacing: 0.09em; text-transform: uppercase; color: var(--text-3); margin-bottom: 5px; }
     .stack-val { font-family: var(--mono); font-size: 13px; font-weight: 500; color: var(--cyan); }
 
     /* FOOTER */
-    footer {
-      max-width: 960px; margin: 0 auto;
-      padding: 20px 32px 48px;
-      border-top: 1px solid var(--border);
-      display: flex; justify-content: space-between;
-      align-items: center; flex-wrap: wrap; gap: 12px;
-    }
+    footer { max-width: 960px; margin: 0 auto; padding: 40px 32px 48px; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
     footer p { font-family: var(--mono); font-size: 11px; color: var(--text-3); }
     footer a { color: var(--text-2); text-decoration: none; }
     footer a:hover { color: var(--cyan); }
 
     @media (max-width: 640px) {
-      .hero, .divider, .section-label, .apps, .stack-section, footer { padding-left: 20px; padding-right: 20px; }
+      .hero, .divider, .tabnav-inner, .section-label, .apps, .stack-section, .cv-section, footer { padding-left: 20px; padding-right: 20px; }
       .apps { grid-template-columns: 1fr; }
       .hero { padding-top: 44px; }
+      .tab-btn { padding: 14px 12px; font-size: 12px; }
     }
   </style>
 </head>
 <body>
 
   <section class="hero">
-    <p class="hero-url"><span class="sl">// </span>github.com/devmobileservice</p>
+    <p class="hero-url"><span class="sl">// </span>github.com/langme</p>
     <h1><span class="word-dev">dev</span><span class="word-mobile">mobile</span><span class="word-service">service</span></h1>
     <p class="hero-sub">
-      <strong>Développeur mobile senior</strong> · Flutter &amp; Android.<br>
-      Du concept à la production — des apps pensées pour le terrain.
+      <strong>Mehdi Lang · Développeur mobile senior</strong> · 15 ans d'expérience.<br>
+      Du concept à la publication sur les stores — Android natif, Flutter &amp; Kotlin Multiplatform.
     </p>
     <div class="badges">
-      <span class="badge">Flutter</span>
-      <span class="badge">Kotlin</span>
-      <span class="badge">Jetpack Compose</span>
-      <span class="badge">Android</span>
-      <span class="badge">Clean Architecture</span>
-      <span class="badge">BLoC</span>
-      <span class="badge">Firebase</span>
+      <span class="badge">Flutter</span><span class="badge">Kotlin</span><span class="badge">Jetpack Compose</span>
+      <span class="badge">Android</span><span class="badge">Clean Architecture</span><span class="badge">BLoC</span><span class="badge">Firebase</span>
     </div>
-    <p class="hero-location"><span class="dot-live"></span>Nantes, France</p>
-  </section>
-
-  <div class="divider"><hr /></div>
-
-  <p class="section-label"><span class="sl">//</span> applications mobiles</p>
-  <section class="apps">
-
-    <article class="app-card trip">
-      <div class="app-header">
-        <div class="app-icon">🗺️</div>
-        <div>
-          <div class="app-name">TripPocket</div>
-          <div class="app-tagline">carnet de voyage intelligent</div>
-        </div>
-      </div>
-      <p class="app-desc">
-        Planifiez, organisez et revivez vos voyages en famille ou entre amis. Itinéraires, spots, cartes interactives — avec un mode exploration façon Fog of War.
-      </p>
-      <div class="app-snippet">
-        <span class="cmt">// Mode exploration urbaine</span><br>
-        <span class="kw">class</span> <span class="cls">FogOfWarCubit</span> <span class="kw">extends</span> <span class="cls">Cubit</span>&lt;<span class="cls">FogState</span>&gt; {<br>
-        &nbsp;&nbsp;<span class="fn">revealArea</span>(<span class="cls">LatLng</span> pos) <span class="kw">=&gt;</span> <span class="fn">emit</span>(state.<span class="fn">reveal</span>(pos));<br>
-        }
-      </div>
-      <div class="features">
-        <span class="feature">Fog of War</span>
-        <span class="feature">Export calendrier</span>
-        <span class="feature">Mode offline</span>
-        <span class="feature">Flutter</span>
-        <span class="feature">BLoC</span>
-      </div>
-      <div class="app-footer">
-        <div class="status">
-          <div class="status-dot beta"></div>
-          Google Play — test fermé
-        </div>
-        <div class="app-links">
-          <a class="link-btn" href="https://github.com/devmobileservice/trippocket" target="_blank">
-            <svg width="13" height="13" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
-            GitHub
-          </a>
-          <a class="link-btn primary" href="#" target="_blank">Play Store ↗</a>
-        </div>
-      </div>
-    </article>
-
-    <article class="app-card padel">
-      <div class="app-header">
-        <div class="app-icon">🎾</div>
-        <div>
-          <div class="app-name">PadelTop</div>
-          <div class="app-tagline">la communauté padel</div>
-        </div>
-      </div>
-      <p class="app-desc">
-        Classement clubs, réservation de terrains et accès vestiaires connectés. Social, stats et intégration BLE pour une expérience padel complète.
-      </p>
-      <div class="features">
-        <span class="feature">Classement clubs</span>
-        <span class="feature">Supabase</span>
-        <span class="feature">Flutter</span>
-        <span class="feature">Social</span>
-      </div>
-      <div class="app-footer">
-        <div class="status">
-          <div class="status-dot active"></div>
-          En développement actif
-        </div>
-        <div class="app-links">
-          <a class="link-btn" href="https://github.com/devmobileservice/padeltop" target="_blank">
-            <svg width="13" height="13" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
-            GitHub
-          </a>
-          <a class="link-btn primary" href="https://play.google.com/store/apps/details?id=com.devmobileservices.padeltop&hl=en" target="_blank">Play Store ↗</a>
-        </div>
-      </div>
-    </article>
-
-  </section>
-
-  <p class="section-label"><span class="sl">//</span> stack technique</p>
-  <section class="stack-section">
-    <div class="stack-grid">
-      <div class="stack-item"><div class="stack-cat">Framework</div><div class="stack-val">Flutter 3</div></div>
-      <div class="stack-item"><div class="stack-cat">Architecture</div><div class="stack-val">Clean + BLoC</div></div>
-      <div class="stack-item"><div class="stack-cat">Backend</div><div class="stack-val">Supabase</div></div>
-      <div class="stack-item"><div class="stack-cat">Notifications</div><div class="stack-val">Firebase</div></div>
-      <div class="stack-item"><div class="stack-cat">Android natif</div><div class="stack-val">Kotlin + Compose</div></div>
-      <div class="stack-item"><div class="stack-cat">Tests</div><div class="stack-val">Appium</div></div>
-      <div class="stack-item"><div class="stack-cat">CI / CD</div><div class="stack-val">GitLab CI</div></div>
+    <div class="hero-contact">
+      <a class="contact-chip" href="mailto:dev.mobile.services.iml@gmail.com"><span class="ico">✉</span> dev.mobile.services.iml@gmail.com</a>
+      <a class="contact-chip" href="https://github.com/langme" target="_blank"><span class="ico">◆</span> github.com/langme</a>
+      <a class="contact-chip" href="https://www.linkedin.com/in/mehdi-lang-a74a481a/" target="_blank"><span class="ico">in</span> LinkedIn</a>
     </div>
+    <p class="hero-location"><span class="dot-live"></span>Nantes / Vendée, France</p>
   </section>
+
+  <!-- TAB NAV -->
+  <nav class="tabnav">
+    <div class="tabnav-inner">
+      <button class="tab-btn active" data-tab="apps"><span class="sl">//</span>applications</button>
+      <button class="tab-btn" data-tab="cv"><span class="sl">//</span>expérience (CV)</button>
+      <button class="tab-btn" data-tab="stack"><span class="sl">//</span>stack</button>
+    </div>
+  </nav>
+
+  <!-- ===== TAB : APPLICATIONS ===== -->
+  <div class="tab-panel active" id="tab-apps">
+    <section class="apps">
+
+      <article class="app-card trip">
+        <div class="app-header">
+          <div class="app-icon-fallback">🗺️</div>
+          <div>
+            <div class="app-name">TripPocket</div>
+            <div class="app-tagline">carnet de voyage intelligent</div>
+          </div>
+          <div class="app-store-meta"><span>Google Play</span><span>Voyage &amp; Local</span></div>
+        </div>
+        <p class="app-desc">
+          Planifiez chaque voyage jour par jour — vols, hébergements, transports, activités et budget centralisés.
+          Scannez vos billets par OCR pour éviter la saisie, et explorez chaque ville en mode aventurier :
+          la carte se dévoile à chaque pas, avec badges souvenirs à débloquer. Suggestions d'itinéraire par IA et synchro cloud.
+        </p>
+        <div class="shots">
+          <div class="shot-frame" data-label="assets/trippocket/01.png"><img src="assets/trippocket/01.png" alt="TripPocket 1" loading="lazy" onerror="this.classList.add('broken')"></div>
+          <div class="shot-frame" data-label="assets/trippocket/02.png"><img src="assets/trippocket/02.png" alt="TripPocket 2" loading="lazy" onerror="this.classList.add('broken')"></div>
+          <div class="shot-frame" data-label="assets/trippocket/03.png"><img src="assets/trippocket/03.png" alt="TripPocket 3" loading="lazy" onerror="this.classList.add('broken')"></div>
+          <div class="shot-frame" data-label="assets/trippocket/04.png"><img src="assets/trippocket/04.png" alt="TripPocket 4" loading="lazy" onerror="this.classList.add('broken')"></div>
+        </div>
+        <div class="features">
+          <span class="feature">Scan OCR billets</span><span class="feature">Mode exploration</span><span class="feature">Suivi budget</span>
+          <span class="feature">Planif IA</span><span class="feature">Sync cloud</span><span class="feature">Flutter · KMP</span>
+        </div>
+        <div class="app-footer">
+          <div class="status"><div class="status-dot active"></div>Disponible sur Google Play</div>
+          <div class="app-links">
+            <a class="link-btn" href="https://trippocket-aeea3.web.app/" target="_blank">Site ↗</a>
+            <a class="link-btn primary" href="https://play.google.com/store/apps/details?id=com.devmobileservices.trippocket.app&hl=en" target="_blank">Play Store ↗</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="app-card padel">
+        <div class="app-header">
+          <div class="app-icon-fallback">🎾</div>
+          <div>
+            <div class="app-name">PADEL TOP</div>
+            <div class="app-tagline">le partenaire tout-en-un du padel</div>
+          </div>
+          <div class="app-store-meta"><span>Google Play</span><span>Sport</span></div>
+        </div>
+        <p class="app-desc">
+          Trouvez des terrains de padel disponibles près de chez vous et réservez en quelques clics, paiement sécurisé intégré.
+          Complétez votre équipe grâce au matching par niveau, coordonnez vos matchs via messagerie de groupe,
+          et suivez vos statistiques et votre historique de réservations.
+        </p>
+        <div class="shots">
+          <div class="shot-frame" data-label="assets/padeltop/01.png"><img src="assets/padeltop/01.png" alt="PADEL TOP 1" loading="lazy" onerror="this.classList.add('broken')"></div>
+          <div class="shot-frame" data-label="assets/padeltop/02.png"><img src="assets/padeltop/02.png" alt="PADEL TOP 2" loading="lazy" onerror="this.classList.add('broken')"></div>
+          <div class="shot-frame" data-label="assets/padeltop/03.png"><img src="assets/padeltop/03.png" alt="PADEL TOP 3" loading="lazy" onerror="this.classList.add('broken')"></div>
+          <div class="shot-frame" data-label="assets/padeltop/04.png"><img src="assets/padeltop/04.png" alt="PADEL TOP 4" loading="lazy" onerror="this.classList.add('broken')"></div>
+        </div>
+        <div class="features">
+          <span class="feature">Réservation terrains</span><span class="feature">Matching par niveau</span><span class="feature">Chat de groupe</span>
+          <span class="feature">Carte interactive</span><span class="feature">Supabase</span><span class="feature">Flutter</span>
+        </div>
+        <div class="app-footer">
+          <div class="status"><div class="status-dot active"></div>Disponible sur Google Play</div>
+          <div class="app-links">
+            <a class="link-btn primary" href="https://play.google.com/store/apps/details?id=com.devmobileservices.padeltop&hl=en" target="_blank">Play Store ↗</a>
+          </div>
+        </div>
+      </article>
+
+    </section>
+  </div>
+
+  <!-- ===== TAB : PARCOURS / CV ===== -->
+  <div class="tab-panel" id="tab-cv">
+    <section class="cv-section">
+      <p class="cv-intro">
+        <strong>15 ans à construire des applications mobiles</strong>,<br>
+        du firmware embarqué automobile jusqu'aux apps Flutter &amp; Kotlin Multiplatform publiées sur les stores.<br><br>
+        Autonome de bout en bout : architecture, développement,<br>
+        connectivité <strong>BLE / SIP</strong>, backend <strong>Firebase &amp; Supabase</strong>,<br>
+        et publication Google Play / App Store.
+      </p>
+      <div class="timeline">
+
+        <div class="job now">
+          <div class="job-top">
+            <div class="job-role">Développeur mobile · <span class="job-co">Indépendant</span></div>
+            <div class="job-date">Janv. 2025 → auj.</div>
+          </div>
+          <div class="job-meta">Saint-Denis-la-Chevasse, France</div>
+          <span class="job-badge">en parallèle du poste COGELEC</span>
+          <ul>
+            <li><strong>TripPocket</strong> — planification de road trip avec OCR, mode exploration et IA (Flutter / Kotlin Multiplatform), publiée sur Google Play</li>
+            <li><strong>PADEL TOP</strong> — réservation de terrains et communauté padel avec accès vestiaires connectés en BLE (Flutter), publiée sur Google Play</li>
+            <li><strong>AcDuo</strong> — gestion des comptes communs d'un couple (Jetpack Compose)</li>
+            <li>Conception UX/UI, développement, backend et publication stores en totale autonomie</li>
+          </ul>
+          <div class="job-tags">
+            <span class="job-tag">Flutter</span><span class="job-tag">Kotlin Multiplatform</span><span class="job-tag">Jetpack Compose</span>
+            <span class="job-tag">BLE</span><span class="job-tag">Firebase</span><span class="job-tag">Supabase</span>
+          </div>
+        </div>
+
+        <div class="job now">
+          <div class="job-top">
+            <div class="job-role">Développeur applications mobiles · <span class="job-co">COGELEC</span></div>
+            <div class="job-date">Juil. 2023 → auj.</div>
+          </div>
+          <div class="job-meta">Mortagne-sur-Sèvre, France · CDI</div>
+          <ul>
+            <li>Développement et maintenance de <strong>3 apps multi-marques</strong> (Intratone, ROZOH, Kibolt) — visiophonie / interphonie connectée</li>
+            <li>Android natif (Java/Kotlin, MVVM) et Flutter (Android/iOS, Clean Architecture)</li>
+            <li>Intégration <strong>BLE</strong> et <strong>VoIP/SIP</strong> pour la communication interphone ↔ application</li>
+            <li>Mise en place d'une brique <strong>IA générative</strong> dans la conception d'une app Flutter</li>
+            <li>Encadrement technique de juniors · Scrum/JIRA · publication Google Play / App Store</li>
+          </ul>
+          <div class="job-tags">
+            <span class="job-tag">Kotlin</span><span class="job-tag">Java</span><span class="job-tag">Flutter</span>
+            <span class="job-tag">BLE</span><span class="job-tag">SIP</span><span class="job-tag">Clean Architecture</span><span class="job-tag">JIRA/Scrum</span>
+          </div>
+        </div>
+
+        <div class="job">
+          <div class="job-top">
+            <div class="job-role">Analyste Développeur Android · <span class="job-co">MyScript</span></div>
+            <div class="job-date">Oct. 2017 → Déc. 2022</div>
+          </div>
+          <div class="job-meta">Nantes · CDI · 5 ans 3 mois</div>
+          <ul>
+            <li>Développement de <strong>Nebo</strong>, app Android de prise de notes manuscrites</li>
+            <li>Collaboration avec les équipes de reconnaissance d'écriture par <strong>réseaux de neurones</strong></li>
+            <li>Tests automatisés avec <strong>Appium</strong></li>
+          </ul>
+          <div class="job-tags">
+            <span class="job-tag">Android</span><span class="job-tag">Java/Kotlin</span><span class="job-tag">Appium</span><span class="job-tag">ML (intégration)</span>
+          </div>
+        </div>
+
+        <div class="job">
+          <div class="job-top">
+            <div class="job-role">Développeur Android · <span class="job-co">Sopra Steria</span></div>
+            <div class="job-date">Sept. 2013 → Mars 2017</div>
+          </div>
+          <div class="job-meta">Nantes · 3 ans 7 mois · Mission La Banque Postale</div>
+          <ul>
+            <li>Services Android mutualisés : pilotes, impression/scan, plugins système, échanges <strong>REST/SOAP</strong></li>
+            <li>Migration d'un parc applicatif <strong>MobileIron → AirWatch</strong> + administration MDM</li>
+            <li>Application C++ de gestion des interfaces réseau · outil C# de déploiement par profil</li>
+          </ul>
+          <div class="job-tags">
+            <span class="job-tag">Android</span><span class="job-tag">C++</span><span class="job-tag">C#</span>
+            <span class="job-tag">REST</span><span class="job-tag">SOAP</span><span class="job-tag">MDM</span>
+          </div>
+        </div>
+
+        <div class="job embedded">
+          <div class="job-top">
+            <div class="job-role">Développeur logiciel embarqué automobile · <span class="job-co">Magnetti Marelli</span></div>
+            <div class="job-date">2012 → 2013</div>
+          </div>
+          <div class="job-desc-inline">Autonomie &amp; consommation en C pour tableaux de bord Volkswagen (e-Up, Polo, Golf, Touran). Driver caméra IP Linux pour capteurs sous-marins (mission IFREMER).</div>
+        </div>
+
+        <div class="job embedded">
+          <div class="job-top">
+            <div class="job-role">Ingénieur logiciel embarqué AUTOSAR · <span class="job-co">See4sys · Geensys</span></div>
+            <div class="job-date">2010 → 2011</div>
+          </div>
+          <div class="job-desc-inline">Modules logiciels standardisés AUTOSAR pour la communication inter-ECU, configuration d'ECU générique.</div>
+        </div>
+
+      </div>
+    </section>
+  </div>
+
+  <!-- ===== TAB : STACK ===== -->
+  <div class="tab-panel" id="tab-stack">
+    <section class="stack-section">
+      <div class="stack-grid">
+        <div class="stack-item"><div class="stack-cat">Framework</div><div class="stack-val">Flutter 3</div></div>
+        <div class="stack-item"><div class="stack-cat">Architecture</div><div class="stack-val">Clean + BLoC</div></div>
+        <div class="stack-item"><div class="stack-cat">Backend</div><div class="stack-val">Supabase</div></div>
+        <div class="stack-item"><div class="stack-cat">Notifications</div><div class="stack-val">Firebase</div></div>
+        <div class="stack-item"><div class="stack-cat">Android natif</div><div class="stack-val">Kotlin + Compose</div></div>
+        <div class="stack-item"><div class="stack-cat">Connectivité</div><div class="stack-val">BLE · SIP</div></div>
+        <div class="stack-item"><div class="stack-cat">Tests</div><div class="stack-val">Appium</div></div>
+        <div class="stack-item"><div class="stack-cat">CI / CD</div><div class="stack-val">GitLab CI</div></div>
+      </div>
+    </section>
+  </div>
 
   <footer>
-    <p>© 2025 devmobileservice</p>
-    <p><a href="https://github.com/devmobileservice" target="_blank">github.com/devmobileservice</a> · Nantes, France</p>
+    <p>© 2026 devmobileservice · Mehdi Lang</p>
+    <p><a href="https://github.com/langme" target="_blank">github.com/langme</a> · Nantes, France</p>
   </footer>
+
+  <script>
+    (function () {
+      var btns = document.querySelectorAll('.tab-btn');
+      var panels = { apps: 'tab-apps', cv: 'tab-cv', stack: 'tab-stack' };
+      btns.forEach(function (b) {
+        b.addEventListener('click', function () {
+          btns.forEach(function (x) { x.classList.remove('active'); });
+          b.classList.add('active');
+          Object.keys(panels).forEach(function (k) {
+            document.getElementById(panels[k]).classList.toggle('active', k === b.dataset.tab);
+          });
+          window.scrollTo({ top: document.querySelector('.tabnav').offsetTop - 1, behavior: 'smooth' });
+        });
+      });
+    })();
+  </script>
 
 </body>
 </html>
