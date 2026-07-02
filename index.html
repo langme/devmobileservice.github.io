@@ -243,6 +243,43 @@
     .job-tag { font-family: var(--mono); font-size: 10.5px; padding: 3px 9px; border-radius: 100px; border: 1px solid var(--border); background: var(--bg2); color: var(--text-2); }
     .job-desc-inline { font-size: 13px; color: var(--text-2); font-weight: 300; line-height: 1.65; margin-top: 4px; }
 
+    /* CV → PDF */
+    .cv-actions { display: flex; justify-content: flex-end; margin-bottom: 14px; }
+    .cv-download-btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-family: var(--mono); font-size: 13px; font-weight: 500;
+      padding: 9px 16px; border-radius: 10px; cursor: pointer;
+      color: var(--cyan); background: var(--cyan-dim); border: 1px solid var(--border2);
+      transition: background .15s, border-color .15s, color .15s;
+    }
+    .cv-download-btn:hover { background: var(--surface2); border-color: var(--cyan); color: var(--text); }
+    .cv-download-btn:active { transform: scale(0.97); }
+    .print-only { display: none; }
+
+    @media print {
+      body > * { display: none !important; }
+      body > #tab-cv { display: block !important; }
+      html, body { background: #fff !important; }
+      .cv-actions { display: none !important; }
+      .print-only { display: block !important; }
+      .print-header { margin-bottom: 18px; padding-bottom: 12px; border-bottom: 2px solid #222; }
+      .print-name { font-family: var(--mono); font-size: 22px; font-weight: 700; color: #111; }
+      .print-title { font-family: var(--mono); font-size: 12px; color: #555; margin-top: 3px; }
+      .cv-section { max-width: 100%; margin: 0; padding: 0 4px; }
+      .cv-intro, .cv-intro strong { color: #222 !important; }
+      .job-role, .job li strong, .cv-intro strong { color: #111 !important; }
+      .job-co { color: #0a5bb8 !important; }
+      .job-date, .job-meta { color: #666 !important; }
+      .job li, .job-desc-inline { color: #333 !important; }
+      .job li::before { color: #0a5bb8 !important; }
+      .timeline::before { background: #999 !important; opacity: 1 !important; }
+      .job::before { background: #fff !important; border-color: #0a5bb8 !important; box-shadow: none !important; }
+      .job-badge { color: #7a5a00 !important; background: #fdf3d6 !important; border-color: #e0c774 !important; }
+      .job-tag { color: #333 !important; background: #f2f2f2 !important; border-color: #ccc !important; }
+      .job { break-inside: avoid; page-break-inside: avoid; }
+      @page { margin: 14mm; }
+    }
+
     /* STACK */
     .stack-section { max-width: 960px; margin: 0 auto; padding: 0 32px 40px; }
     .stack-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(138px, 1fr)); gap: 10px; }
@@ -370,6 +407,15 @@
   <!-- ===== TAB : PARCOURS / CV ===== -->
   <div class="tab-panel" id="tab-cv">
     <section class="cv-section">
+      <div class="cv-actions">
+        <button type="button" class="cv-download-btn" id="cvDownload" aria-label="Télécharger le CV en PDF">
+          <span aria-hidden="true">⬇</span> Télécharger en PDF
+        </button>
+      </div>
+      <div class="print-only print-header">
+        <div class="print-name">Mehdi Lang</div>
+        <div class="print-title">Développeur mobile · 15 ans d'expérience</div>
+      </div>
       <p class="cv-intro">
         <strong>15 ans à construire des applications mobiles</strong>,<br>
         du firmware embarqué automobile jusqu'aux apps Flutter &amp; Kotlin Multiplatform publiées sur les stores.<br><br>
@@ -505,6 +551,9 @@
           window.scrollTo({ top: document.querySelector('.tabnav').offsetTop - 1, behavior: 'smooth' });
         });
       });
+
+      var cvBtn = document.getElementById('cvDownload');
+      if (cvBtn) cvBtn.addEventListener('click', function () { window.print(); });
     })();
   </script>
 
