@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>devmobileservice — Mehdi Lang · Apps mobiles</title>
+  <title>devmobileservice — Apps mobiles</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
@@ -12,7 +12,7 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --bg:#0B1120; --bg2:#0F1829; --surface:#131E30; --surface2:#1A2740;
+      --bg:#1E2C4A; --bg2:#243456; --surface:#2C3D63; --surface2:#35497A;
       --border:rgba(56,139,253,0.12); --border2:rgba(56,139,253,0.25);
       --cyan:#38BDF8; --cyan-dim:rgba(56,189,248,0.10);
       --green:#4ADE80; --green-dim:rgba(74,222,128,0.10);
@@ -62,28 +62,32 @@
     /* TABS */
     .tabnav {
       position: sticky; top: 0; z-index: 20;
-      background: rgba(11,17,32,0.82);
+      background: rgba(30,44,74,0.82);
       backdrop-filter: blur(12px);
       border-top: 1px solid var(--border);
       border-bottom: 1px solid var(--border);
       margin-bottom: 44px;
     }
-    .tabnav-inner { max-width: 960px; margin: 0 auto; padding: 0 32px; display: flex; gap: 4px; }
+    .tabnav-inner { max-width: 960px; margin: 0 auto; padding: 12px 32px; display: flex; gap: 10px; flex-wrap: wrap; }
     .tab-btn {
-      font-family: var(--mono); font-size: 13px; font-weight: 500;
-      color: var(--text-3); background: none; border: none; cursor: pointer;
-      padding: 16px 18px; position: relative;
-      transition: color 0.15s; letter-spacing: 0.02em;
+      font-family: var(--mono); font-size: 13px; font-weight: 600;
+      color: var(--text-2); background: var(--surface); cursor: pointer;
+      border: 1px solid var(--border); border-radius: 100px;
+      padding: 10px 20px; position: relative;
+      display: inline-flex; align-items: center; gap: 8px;
+      transition: color 0.15s, background-color 0.15s, border-color 0.15s, transform 0.15s;
+      letter-spacing: 0.02em;
     }
-    .tab-btn .sl { color: var(--text-3); margin-right: 5px; transition: color 0.15s; }
-    .tab-btn:hover { color: var(--text-2); }
-    .tab-btn.active { color: var(--cyan); }
+    .tab-btn .sl { color: var(--text-3); display: inline-flex; transition: color 0.15s; }
+    .tab-btn .sl svg { width: 15px; height: 15px; display: block; }
+    .tab-btn:hover { color: var(--text); background: var(--surface2); border-color: var(--border2); transform: translateY(-1px); }
+    .tab-btn:hover .sl { color: var(--text-2); }
+    .tab-btn.active {
+      color: var(--cyan); background: var(--cyan-dim);
+      border-color: rgba(56,189,248,0.55);
+      box-shadow: 0 0 0 1px rgba(56,189,248,0.12) inset, 0 0 14px rgba(56,189,248,0.15);
+    }
     .tab-btn.active .sl { color: var(--cyan); }
-    .tab-btn.active::after {
-      content: ''; position: absolute; left: 14px; right: 14px; bottom: -1px;
-      height: 2px; background: var(--cyan); border-radius: 2px;
-      box-shadow: 0 0 8px var(--cyan);
-    }
 
     .tab-panel { display: none; animation: fade 0.35s ease; }
     .tab-panel.active { display: block; }
@@ -298,7 +302,8 @@
       .hero, .divider, .tabnav-inner, .section-label, .apps, .stack-section, .cv-section, footer { padding-left: 20px; padding-right: 20px; }
       .apps { grid-template-columns: 1fr; }
       .hero { padding-top: 44px; }
-      .tab-btn { padding: 14px 12px; font-size: 12px; }
+      .tabnav-inner { gap: 8px; }
+      .tab-btn { padding: 9px 14px; font-size: 12px; }
     }
   </style>
 </head>
@@ -308,7 +313,7 @@
     <p class="hero-url"><span class="sl">// </span>github.com/langme</p>
     <h1><span class="word-dev">dev</span><span class="word-mobile">mobile</span><span class="word-service">service</span></h1>
     <p class="hero-sub">
-      <strong>Mehdi Lang · Développeur mobile senior</strong> · 15 ans d'expérience.<br>
+      <strong>Développeur mobile senior</strong> · 15 ans d'expérience.<br>
       Du concept à la publication sur les stores — Android natif, Flutter &amp; Kotlin Multiplatform.
     </p>
     <div class="badges">
@@ -318,7 +323,6 @@
     <div class="hero-contact">
       <a class="contact-chip" href="mailto:dev.mobile.services.iml@gmail.com"><span class="ico">✉</span> dev.mobile.services.iml@gmail.com</a>
       <a class="contact-chip" href="https://github.com/langme" target="_blank"><span class="ico">◆</span> github.com/langme</a>
-      <a class="contact-chip" href="https://www.linkedin.com/in/mehdi-lang-a74a481a/" target="_blank"><span class="ico">in</span> LinkedIn</a>
     </div>
     <p class="hero-location"><span class="dot-live"></span>Nantes / Vendée, France</p>
   </section>
@@ -326,9 +330,9 @@
   <!-- TAB NAV -->
   <nav class="tabnav">
     <div class="tabnav-inner">
-      <button class="tab-btn active" data-tab="apps"><span class="sl">//</span>applications</button>
-      <button class="tab-btn" data-tab="cv"><span class="sl">//</span>expérience (CV)</button>
-      <button class="tab-btn" data-tab="stack"><span class="sl">//</span>stack</button>
+      <button class="tab-btn active" data-tab="apps"><span class="sl"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2" width="12" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg></span>applications</button>
+      <button class="tab-btn" data-tab="cv"><span class="sl"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg></span>expérience (CV)</button>
+      <button class="tab-btn" data-tab="stack"><span class="sl"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg></span>stack</button>
     </div>
   </nav>
 
@@ -413,7 +417,6 @@
         </button>
       </div>
       <div class="print-only print-header">
-        <div class="print-name">Mehdi Lang</div>
         <div class="print-title">Développeur mobile · 15 ans d'expérience</div>
       </div>
       <p class="cv-intro">
@@ -533,7 +536,7 @@
   </div>
 
   <footer>
-    <p>© 2026 devmobileservice · Mehdi Lang</p>
+    <p>© 2026 devmobileservice</p>
     <p><a href="https://github.com/langme" target="_blank">github.com/langme</a> · Nantes, France</p>
   </footer>
 
